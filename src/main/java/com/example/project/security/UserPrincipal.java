@@ -7,10 +7,12 @@ import java.util.stream.Collectors;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import com.example.project.model.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+@SuppressWarnings("serial")
 public class UserPrincipal implements UserDetails {
 	private Long id;
 	
@@ -78,7 +80,7 @@ public class UserPrincipal implements UserDetails {
 	}
 	
 	@Override
-	public boolean isAccountNotExpired() {
+	public boolean isAccountNonExpired() {
 		return true;
 	}
 	
@@ -109,5 +111,7 @@ public class UserPrincipal implements UserDetails {
     public int hashCode() {
         return Objects.hash(id);
     }
+
+	
 	
 }
